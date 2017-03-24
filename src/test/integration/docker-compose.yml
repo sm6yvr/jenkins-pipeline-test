@@ -1,0 +1,6 @@
+roberth-docker-test-service:
+    image: vehco/roberth-docker-test
+    ports:
+      - "8980:80"
+    stdin_open: true
+    tty: true

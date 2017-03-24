@@ -17,10 +17,7 @@ pipeline {
     stages {
         stage('Integration tests') {
             steps {
-                sh ' cd roberth-docker-test/src/test/integration \
-                     chmod +x integrationtest.sh \
-                     ./integrationtest.sh
-   		  '
+                sh ' cd roberth-docker-test/src/test/integration;  chmod +x integrationtest.sh ; ./integrationtest.sh'
             }
         }
     }

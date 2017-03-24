@@ -6,7 +6,7 @@ function quit {
 	exit $1
 }
 
-docker-compose up -d
+docker-compose --verbose up -d
 
 
 # Make sure containers are ready for the test

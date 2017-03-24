@@ -14,8 +14,7 @@ pipeline {
         stage('Integration tests') {
             steps {
 		sh 'pwd'
-		sh ' ls -la'
-                sh ' #cd roberth-docker-test/src/test/integration;  chmod +x integrationtest.sh ; ./integrationtest.sh'
+                sh 'cd src/test/integration;  chmod +x integrationtest.sh ; ./integrationtest.sh'
             }
         }
     }

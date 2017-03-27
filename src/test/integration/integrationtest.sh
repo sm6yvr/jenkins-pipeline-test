@@ -1,6 +1,8 @@
 #!/bin/bash -x
 
-curl http://192.168.1.139:8980/ |grep HTTP
+echo "TODO: Do a curl request to the docker container.. "
+
+# curl http://192.168.1.139:8980/ |grep HTTP
 
 #curl -m 10 -s -o /dev/null -w "%{http_code}\n" http://192.168.1.139:8980/
 

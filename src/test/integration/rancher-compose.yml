@@ -1,10 +1,10 @@
 roberth-docker-test-service:
   scale: 1
-  health_check:
-    port: 8980
-    interval: 2000
-    unhealthy_threshold: 3
-    request_line: GET / HTTP/1.1
-    healthy_threshold: 2
-    response_timeout: 2000
-    strategy: none
+  #health_check:
+  #  port: 8980
+  #  interval: 2000
+  #  unhealthy_threshold: 3
+  #  request_line: GET / HTTP/1.1
+  #  healthy_threshold: 2
+  #  response_timeout: 2000
+  #  strategy: none

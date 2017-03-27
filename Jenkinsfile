@@ -3,21 +3,21 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        parallel(
-          "Test": {
-            sh 'mvn -B clean test'
-            
-          },
-          "Test again ": {
-            echo 'Print a test message'
-            
-          }
-        )
+        sh 'mvn -B clean test'
       }
     }
     stage('Package') {
       steps {
-        sh 'mvn -B package'
+        parallel(
+          "Package": {
+            sh 'mvn -B package'
+            
+          },
+          "Package dist": {
+            echo 'Creating dist package'
+            
+          }
+        )
       }
     }
     stage('Integration tests') {

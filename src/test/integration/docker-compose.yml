@@ -2,7 +2,7 @@ version: '2'
 services: 
   
   roberth-docker-test-service:
-    image: vehco/roberth-docker-test:01-SNAPSHOT
+    image: vehco/roberth-docker-test
     ports:
       - "8980:80"
     stdin_open: true

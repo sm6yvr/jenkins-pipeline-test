@@ -1,7 +1,8 @@
 #!/bin/bash -x
 
-ifconfig -a
-curl -m 10 -s -o /dev/null -w "%{http_code}\n" http://192.168.1.139:8980/
+curl http://192.168.1.139:8980/ |grep HTTP
+
+#curl -m 10 -s -o /dev/null -w "%{http_code}\n" http://192.168.1.139:8980/
 
 #response=$(curl -s -o /dev/null -w "%{http_code}\n" http://www.example.org/)
 #if [ "$response" != "200" ]
@@ -22,4 +23,4 @@ curl -m 10 -s -o /dev/null -w "%{http_code}\n" http://192.168.1.139:8980/
 #	echo "Pass: Register User"
 #fi
 
-quit 0
+exit 0

@@ -4,6 +4,7 @@ roberth-docker-test-service:
     port: 8980
     interval: 2000
     unhealthy_threshold: 3
-    request_line: GET / HTTP/1.0
+    request_line: GET / HTTP/1.1
     healthy_threshold: 2
     response_timeout: 2000
+    strategy: none

@@ -1,5 +1,6 @@
-version: 2
+version: '2'
 services: 
+  
   roberth-docker-test-service:
     image: vehco/roberth-docker-test
     ports:

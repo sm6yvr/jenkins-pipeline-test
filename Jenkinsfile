@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Package') {
             steps {
-                sh '# mvn -B package'
+                sh 'mvn -B package'
             }
         }
         stage('Integration tests') {

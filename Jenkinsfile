@@ -13,8 +13,8 @@ pipeline {
         }
         stage('Integration tests') {
             steps {
-		sh 'pwd'
-                sh 'cd src/test/integration;  chmod +x integrationtest.sh ; ./integrationtest.sh'
+                sh 'docker-compose -f src/test/integration/docker-compose.yml --verbose up -d'
+		        sh 'cd src/test/integration;  chmod +x integrationtest.sh ; ./integrationtest.sh'
             }
         }
     }

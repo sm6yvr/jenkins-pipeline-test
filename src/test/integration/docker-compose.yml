@@ -1,4 +1,6 @@
-roberth-docker-test-service:
+version: 2
+services: 
+  roberth-docker-test-service:
     image: vehco/roberth-docker-test
     ports:
       - "8980:80"

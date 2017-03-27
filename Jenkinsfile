@@ -23,12 +23,11 @@ pipeline {
                 sh 'rancher-compose --url http://rancher:8080 --access-key 958A9ED77841D1CCFBB7 --secret-key uWDyA7LJGM4GoAvedb7pWHFcgjB664fbAfHdJP42 --verbose up -d --force-upgrade --pull --confirm-upgrade roberth-docker-test-service'
             }
         }
-        post('Shutting down docker container') {
+    }
+    post() {
           always {
                 sh 'docker-compose -f src/test/integration/docker-compose.yml stop'
                 sh 'docker-compose -f src/test/integration/docker-compose.yml rm -f'
           }
-        }
-
     }
 }

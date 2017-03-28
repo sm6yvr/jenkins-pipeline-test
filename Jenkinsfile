@@ -8,24 +8,24 @@ pipeline {
     }
     stage('Package') {
       steps {
-        parallel(
-          "Package": {
-            sh 'mvn -B package'
-            
-          },
-          "Package dist": {
-            echo 'Creating dist package'
-            
-          }
-        )
+        sh 'mvn -B package'
       }
     }
     stage('Integration tests') {
       steps {
-        sh 'docker-compose -f src/test/integration/docker-compose.yml up -d'
-        sh 'cd src/test/integration;  chmod +x integrationtest.sh ; ./integrationtest.sh'
-        sh 'docker-compose -f src/test/integration/docker-compose.yml stop'
-        sh 'docker-compose -f src/test/integration/docker-compose.yml rm -f'
+        parallel(
+          "Integration tests": {
+            sh 'docker-compose -f src/test/integration/docker-compose.yml up -d'
+            sh 'cd src/test/integration;  chmod +x integrationtest.sh ; ./integrationtest.sh'
+            sh 'docker-compose -f src/test/integration/docker-compose.yml stop'
+            sh 'docker-compose -f src/test/integration/docker-compose.yml rm -f'
+            
+          },
+          "new integration": {
+            echo 'Integration test again '
+            
+          }
+        )
       }
     }
     stage('Deploy to rancher') {

@@ -13,19 +13,10 @@ pipeline {
     }
     stage('Integration tests') {
       steps {
-        parallel(
-          "Integration tests": {
-            sh 'docker-compose -f src/test/integration/docker-compose.yml up -d'
-            sh 'cd src/test/integration;  chmod +x integrationtest.sh ; ./integrationtest.sh'
-            sh 'docker-compose -f src/test/integration/docker-compose.yml stop'
-            sh 'docker-compose -f src/test/integration/docker-compose.yml rm -f'
-            
-          },
-          "new integration": {
-            echo 'Integration test again '
-            
-          }
-        )
+        sh 'docker-compose -f src/test/integration/docker-compose.yml up -d'
+        sh 'cd src/test/integration;  chmod +x integrationtest.sh ; ./integrationtest.sh'
+        sh 'docker-compose -f src/test/integration/docker-compose.yml stop'
+        sh 'docker-compose -f src/test/integration/docker-compose.yml rm -f'
       }
     }
     stage('Deploy to rancher') {

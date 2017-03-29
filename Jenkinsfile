@@ -17,6 +17,7 @@ pipeline {
         sh 'cd src/test/integration;  chmod +x integrationtest.sh ; ./integrationtest.sh'
         sh 'docker-compose -f src/test/integration/docker-compose.yml stop'
         sh 'docker-compose -f src/test/integration/docker-compose.yml rm -f'
+        input(message: 'Deploy to QA?', id: 'deploy-to-qa', submitter: 'server', submitterParameter: 'serverparameter')
       }
     }
     stage('Deploy to rancher') {

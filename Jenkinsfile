@@ -20,6 +20,11 @@ pipeline {
         input(message: 'Deploy to QA?', id: 'deploy-to-qa', submitter: 'server', submitterParameter: 'serverparameter')
       }
     }
+    stage('Ready for deploy') {
+      steps {
+            echo 'Ready for deploy!'
+      }
+    }
     stage('Deploy to rancher') {
       steps {
         sh 'rancher-compose -f src/test/integration/docker-compose.yml -r src/test/integration/rancher-compose.yml --url http://rancher:8080 --access-key 958A9ED77841D1CCFBB7 --secret-key uWDyA7LJGM4GoAvedb7pWHFcgjB664fbAfHdJP42 --verbose up -d --force-upgrade --pull --confirm-upgrade roberth-docker-test-service'
